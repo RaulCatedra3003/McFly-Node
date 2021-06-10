@@ -11,18 +11,31 @@ describe('NotesService', () => {
       {
         _id: '60be6969e3fb9e5fe0a6b816',
         note: 'me encanta trabajar con NestJs',
+        likedBy: [],
       },
-      { _id: '60be6969e3fb9e5fe0a6b817', note: 'hacer TDD es lo más' },
+      {
+        _id: '60be6969e3fb9e5fe0a6b817',
+        note: 'hacer TDD es lo más',
+        likedBy: [],
+      },
     ]),
 
     create: jest.fn((dto: CreateNoteDto) => ({
       ...dto,
       _id: '12348934osdaa12345143',
+      likedBy: [],
     })),
 
     findOne: jest.fn(() => ({
       _id: '60be6969e3fb9e5fe0a6b816',
       note: 'me encanta trabajar con NestJs',
+      likedBy: [],
+    })),
+
+    findOneAndUpdate: jest.fn((queryFind, querySet) => ({
+      _id: queryFind._id,
+      note: 'me encanta trabajar con NestJs',
+      likedBy: [querySet.$push.likedBy],
     })),
   };
 
@@ -49,8 +62,13 @@ describe('NotesService', () => {
       {
         _id: '60be6969e3fb9e5fe0a6b816',
         note: 'me encanta trabajar con NestJs',
+        likedBy: [],
       },
-      { _id: '60be6969e3fb9e5fe0a6b817', note: 'hacer TDD es lo más' },
+      {
+        _id: '60be6969e3fb9e5fe0a6b817',
+        note: 'hacer TDD es lo más',
+        likedBy: [],
+      },
     ];
 
     const notes = await service.getNotes();
@@ -63,11 +81,12 @@ describe('NotesService', () => {
     const response = {
       _id: '60be6969e3fb9e5fe0a6b816',
       note: 'me encanta trabajar con NestJs',
+      likedBy: [],
     };
 
-    const notes = await service.getNote(noteId);
+    const note = await service.getNote(noteId);
 
-    expect(notes).toEqual(response);
+    expect(note).toEqual(response);
   });
 
   it('calling createNote should return created note', async () => {
@@ -75,11 +94,27 @@ describe('NotesService', () => {
       note: 'me encanta trabajar con NestJs',
     };
 
-    const notes = await service.createNote(dto);
+    const note = await service.createNote(dto);
 
-    expect(notes).toEqual({
+    expect(note).toEqual({
       note: 'me encanta trabajar con NestJs',
       _id: expect.any(String),
+      likedBy: [],
+    });
+  });
+
+  it('calling likeNote should return note with userId inside likedBy array', async () => {
+    const dto = {
+      userId: '60be6969e3fb9e5fe0a6b816',
+      noteId: '60be6969e3fb9e5fe0a6b817',
+    };
+
+    const note = await service.likeNote(dto);
+
+    expect(note).toEqual({
+      note: expect.any(String),
+      _id: dto.noteId,
+      likedBy: expect.arrayContaining([dto.userId]),
     });
   });
 });
