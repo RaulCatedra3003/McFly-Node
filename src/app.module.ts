@@ -5,6 +5,7 @@ import { AppService } from './app.service';
 import { configuration } from './config/configuration';
 import { configValidationSchema } from './config/validation';
 import { DatabaseModule } from './database/database.module';
+import { NotesModule } from './notes/notes.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { DatabaseModule } from './database/database.module';
       validationSchema: configValidationSchema,
     }),
     DatabaseModule.forRoot(),
+    NotesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
