@@ -33,7 +33,8 @@ describe('NotesController', () => {
   });
 
   it('http get to /:noteId should call getNote function from Notes Service', async () => {
-    controller.getNote();
+    const noteId = '60be6969e3fb9e5fe0a6b816';
+    controller.getNote(noteId);
     expect(mockNoteService.getNote).toHaveBeenCalled();
   });
 

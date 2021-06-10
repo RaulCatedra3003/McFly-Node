@@ -59,12 +59,13 @@ describe('NotesService', () => {
   });
 
   it('calling getNote should return one note', async () => {
+    const noteId = '60be6969e3fb9e5fe0a6b816';
     const response = {
       _id: '60be6969e3fb9e5fe0a6b816',
       note: 'me encanta trabajar con NestJs',
     };
 
-    const notes = await service.getNote();
+    const notes = await service.getNote(noteId);
 
     expect(notes).toEqual(response);
   });
