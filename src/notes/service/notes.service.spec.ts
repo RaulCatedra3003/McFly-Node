@@ -19,6 +19,11 @@ describe('NotesService', () => {
       ...dto,
       _id: '12348934osdaa12345143',
     })),
+
+    findOne: jest.fn(() => ({
+      _id: '60be6969e3fb9e5fe0a6b816',
+      note: 'me encanta trabajar con NestJs',
+    })),
   };
 
   beforeEach(async () => {
@@ -49,6 +54,17 @@ describe('NotesService', () => {
     ];
 
     const notes = await service.getNotes();
+
+    expect(notes).toEqual(response);
+  });
+
+  it('calling getNote should return one note', async () => {
+    const response = {
+      _id: '60be6969e3fb9e5fe0a6b816',
+      note: 'me encanta trabajar con NestJs',
+    };
+
+    const notes = await service.getNote();
 
     expect(notes).toEqual(response);
   });
