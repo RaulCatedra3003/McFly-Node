@@ -18,6 +18,14 @@ export class NotesService {
     }
   }
 
+  async getNote(noteId: string) {
+    try {
+      return this.noteModel.findOne({ _id: noteId });
+    } catch (error) {
+      return error;
+    }
+  }
+
   async createNote(dto: CreateNoteDto) {
     try {
       return this.noteModel.create(dto);
