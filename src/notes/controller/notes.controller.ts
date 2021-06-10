@@ -7,6 +7,7 @@ import {
   Post,
 } from '@nestjs/common';
 import { CreateNoteDto } from '../dto/create-note.dto';
+import { LikeNoteDto } from '../dto/like-note.dto';
 import { MongoDbObjectIdPipe } from '../pipes/mongodb-object-id.pipe';
 import { NotesService } from '../service/notes.service';
 
@@ -38,6 +39,16 @@ export class NotesController {
   async createNote(@Body() createNoteDto: CreateNoteDto) {
     try {
       const response = await this.noteService.createNote(createNoteDto);
+      return response;
+    } catch (error) {
+      throw new BadRequestException(error.message);
+    }
+  }
+
+  @Post('/like')
+  async likeNote(@Body() likeNoteDto: LikeNoteDto) {
+    try {
+      const response = await this.noteService.likeNote(likeNoteDto);
       return response;
     } catch (error) {
       throw new BadRequestException(error.message);

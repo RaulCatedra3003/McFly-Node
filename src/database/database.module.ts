@@ -14,6 +14,7 @@ export class DatabaseModule {
             uri: configService.get<string>('dbUrl'),
             useCreateIndex: true,
             useNewUrlParser: true,
+            useFindAndModify: false,
           }),
           inject: [ConfigService],
         }),

@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CreateNoteDto } from '../dto/create-note.dto';
+import { LikeNoteDto } from '../dto/like-note.dto';
 import { NoteDocument } from '../schema/note.schema';
 
 @Injectable()
@@ -32,5 +33,14 @@ export class NotesService {
     } catch (error) {
       return error;
     }
+  }
+
+  async likeNote(dto: LikeNoteDto) {
+    try {
+      return this.noteModel.findOneAndUpdate(
+        { _id: dto.noteId },
+        { $push: { likedBy: dto.userId } },
+      );
+    } catch (error) {}
   }
 }
