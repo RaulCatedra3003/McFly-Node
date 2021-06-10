@@ -11,12 +11,12 @@ describe('NotesService', () => {
       {
         _id: '60be6969e3fb9e5fe0a6b816',
         note: 'me encanta trabajar con NestJs',
-        likedBy: [],
+        likedBy: ['60be6969e3fb9e5fe0a6b816'],
       },
       {
         _id: '60be6969e3fb9e5fe0a6b817',
         note: 'hacer TDD es lo más',
-        likedBy: [],
+        likedBy: ['60be6969e3fb9e5fe0a6b816'],
       },
     ]),
 
@@ -62,12 +62,12 @@ describe('NotesService', () => {
       {
         _id: '60be6969e3fb9e5fe0a6b816',
         note: 'me encanta trabajar con NestJs',
-        likedBy: [],
+        likedBy: ['60be6969e3fb9e5fe0a6b816'],
       },
       {
         _id: '60be6969e3fb9e5fe0a6b817',
         note: 'hacer TDD es lo más',
-        likedBy: [],
+        likedBy: ['60be6969e3fb9e5fe0a6b816'],
       },
     ];
 
@@ -116,5 +116,21 @@ describe('NotesService', () => {
       _id: dto.noteId,
       likedBy: expect.arrayContaining([dto.userId]),
     });
+  });
+
+  it('calling likesNotes should return all the user liked notes', async () => {
+    const userId = '60be6969e3fb9e5fe0a6b816';
+
+    const note = await service.likedNotes(userId);
+
+    expect(note).toEqual(
+      expect.arrayContaining([
+        {
+          note: expect.any(String),
+          _id: expect.any(String),
+          likedBy: expect.arrayContaining([userId]),
+        },
+      ]),
+    );
   });
 });

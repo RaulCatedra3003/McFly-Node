@@ -41,6 +41,8 @@ export class NotesService {
         { _id: dto.noteId },
         { $push: { likedBy: dto.userId } },
       );
-    } catch (error) {}
+    } catch (error) {
+      return error;
+    }
   }
 }
