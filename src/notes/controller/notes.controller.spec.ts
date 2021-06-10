@@ -10,7 +10,7 @@ describe('NotesController', () => {
     createNote: jest.fn(),
     getNote: jest.fn(),
     likeNote: jest.fn(),
-    likedNotes: jest.fn(),
+    getLikedNotes: jest.fn(),
   };
 
   beforeEach(async () => {
@@ -61,8 +61,8 @@ describe('NotesController', () => {
 
   it('http get to /liked/:userId shoutd call likedNotes function from Notes Service', () => {
     const userId = '60be6969e3fb9e5fe0a6b816';
-    controller.likedNotes(userId);
+    controller.getLikedNotes(userId);
 
-    expect(mockNoteService.likedNotes).toHaveBeenCalled();
+    expect(mockNoteService.getLikedNotes).toHaveBeenCalled();
   });
 });

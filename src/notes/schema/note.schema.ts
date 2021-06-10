@@ -6,7 +6,7 @@ export class NoteDocument extends Document {
   @Prop({ trim: true, required: [true, 'The note is required'] })
   note: string;
 
-  @Prop({ trim: true, default: [] })
+  @Prop({ default: [] })
   likedBy: string[];
 }
 

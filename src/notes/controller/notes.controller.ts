@@ -35,6 +35,16 @@ export class NotesController {
     }
   }
 
+  @Get('liked/:userId')
+  async getLikedNotes(@Param('userId', MongoDbObjectIdPipe) userId: string) {
+    try {
+      const response = await this.noteService.getLikedNotes(userId);
+      return response;
+    } catch (error) {
+      throw new BadRequestException(error.message);
+    }
+  }
+
   @Post()
   async createNote(@Body() createNoteDto: CreateNoteDto) {
     try {

@@ -40,7 +40,16 @@ export class NotesService {
       return this.noteModel.findOneAndUpdate(
         { _id: dto.noteId },
         { $push: { likedBy: dto.userId } },
+        { new: true },
       );
+    } catch (error) {
+      return error;
+    }
+  }
+
+  async getLikedNotes(userId: string) {
+    try {
+      return this.noteModel.find({ likedBy: userId });
     } catch (error) {
       return error;
     }

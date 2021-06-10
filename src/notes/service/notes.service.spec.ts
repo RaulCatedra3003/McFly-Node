@@ -121,7 +121,7 @@ describe('NotesService', () => {
   it('calling likesNotes should return all the user liked notes', async () => {
     const userId = '60be6969e3fb9e5fe0a6b816';
 
-    const note = await service.likedNotes(userId);
+    const note = await service.getLikedNotes(userId);
 
     expect(note).toEqual(
       expect.arrayContaining([
