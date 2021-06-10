@@ -1,4 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { CreateNoteDto } from '../dto/create-note.dto';
 import { NotesService } from '../service/notes.service';
 import { NotesController } from './notes.controller';
 
@@ -13,6 +14,11 @@ describe('NotesController', () => {
       },
       { _id: '60be6969e3fb9e5fe0a6b817', note: 'hacer TDD es lo más' },
     ]),
+
+    createNote: jest.fn((dto: CreateNoteDto) => ({
+      ...dto,
+      _id: '032498das2034',
+    })),
   };
 
   beforeEach(async () => {
@@ -43,5 +49,18 @@ describe('NotesController', () => {
     const notes = await controller.getNotes();
 
     expect(notes).toEqual(result);
+  });
+
+  it('http post to root shoutd return the new Note', async () => {
+    const dto = {
+      note: 'me encanta trabajar con NestJs',
+    };
+
+    const newNote = await controller.createNote(dto);
+
+    expect(newNote).toEqual({
+      note: 'me encanta trabajar con NestJs',
+      _id: expect.any(String),
+    });
   });
 });
