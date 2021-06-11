@@ -48,8 +48,14 @@ export class NotesController {
   @Post()
   async createNote(@Body() createNoteDto: CreateNoteDto) {
     try {
-      const response = await this.noteService.createNote(createNoteDto);
-      return response;
+      const { _id, note, likedBy } = await this.noteService.createNote(
+        createNoteDto,
+      );
+      return {
+        _id,
+        note,
+        likedBy,
+      };
     } catch (error) {
       throw new BadRequestException(error.message);
     }
