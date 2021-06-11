@@ -34,7 +34,7 @@ npm install
 ```
 
 _When you have all the dependencies installed you need to create a .env files, you can see a example in .example.env
-one in root folder_
+file in root folder_
 
 _The web .env file need to contain the next variables:_
 
