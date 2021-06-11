@@ -1,73 +1,66 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
+This project proposes a simple API to get, create, and like notes writing in JavaScript (Typescript) and using NestJs Framework.
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Start 🚀
 
-## Description
+Get a clone of the project in local. You need to have installed nodejs and nestjs
+in your computer to run the proyect.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+### Requirements 📋
 
-## Installation
+_You need to install nodejs_
 
-```bash
-$ npm install
+Go to [NodeJs web page](https://nodejs.org/es/) download and install the
+program.
+
+_Then install NestJs cli_
+
+```
+npm i -g @nestjs/cli
 ```
 
-## Running the app
+### Instalation 🔧
 
-```bash
-# development
-$ npm run start
+_First clone the repository_
 
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+```
+git clone https://github.com/RaulCatedra3003/McFly-Node.git
 ```
 
-## Test
+_Then run npm install in the base folder_
 
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+```
+npm install
 ```
 
-## Support
+_When you have all the dependencies installed you need to create a .env files, you can see a example in .example.env
+one in root folder_
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+_The web .env file need to contain the next variables:_
 
-## Stay in touch
+```
+NODE_ENV = development
+PORT = 4000
+CLIENT_URL = http://localhost:3000
+MONGO_DB_URL = your mongo Db url conection
+```
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+## Build with 🛠️
 
-## License
+- [NodeJS](https://nodejs.org/es/)
+- [NestJs](https://nestjs.com/)
+- [MongoDB](https://www.mongodb.com/)
 
-Nest is [MIT licensed](LICENSE).
+## Contributing 🖇️
+
+If you want to contribute, please fork the repository, create a new branch whit
+your contribution, and push the branch as a pull requests.
+
+## Wiki 📖
+
+- You can find more information of how the app works in the
+  [TDR](./documentation/TDR.md) file.
+
+## Contributors ✨
+
+Made with ❤ by [Raúl Cátedra Martínez](https://github.com/RaulCatedra3003)
