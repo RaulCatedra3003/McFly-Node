@@ -13,12 +13,12 @@ import { NotesService } from '../service/notes.service';
 
 @Controller('notes')
 export class NotesController {
-  constructor(private noteService: NotesService) {}
+  constructor(private notesService: NotesService) {}
 
   @Get()
   async getNotes() {
     try {
-      const response = await this.noteService.getNotes();
+      const response = await this.notesService.getNotes();
       return response;
     } catch (error) {
       throw new BadRequestException(error.message);
@@ -28,7 +28,7 @@ export class NotesController {
   @Get('/:noteId')
   async getNote(@Param('noteId', MongoDbObjectIdPipe) noteId: string) {
     try {
-      const response = await this.noteService.getNote(noteId);
+      const response = await this.notesService.getNote(noteId);
       return response;
     } catch (error) {
       throw new BadRequestException(error.message);
@@ -38,7 +38,7 @@ export class NotesController {
   @Get('liked/:userId')
   async getLikedNotes(@Param('userId', MongoDbObjectIdPipe) userId: string) {
     try {
-      const response = await this.noteService.getLikedNotes(userId);
+      const response = await this.notesService.getLikedNotes(userId);
       return response;
     } catch (error) {
       throw new BadRequestException(error.message);
@@ -48,7 +48,7 @@ export class NotesController {
   @Post()
   async createNote(@Body() createNoteDto: CreateNoteDto) {
     try {
-      const { _id, note, likedBy } = await this.noteService.createNote(
+      const { _id, note, likedBy } = await this.notesService.createNote(
         createNoteDto,
       );
       return {
@@ -64,7 +64,7 @@ export class NotesController {
   @Post('/like')
   async likeNote(@Body() likeNoteDto: LikeNoteDto) {
     try {
-      const response = await this.noteService.likeNote(likeNoteDto);
+      const response = await this.notesService.likeNote(likeNoteDto);
       return response;
     } catch (error) {
       throw new BadRequestException(error.message);
