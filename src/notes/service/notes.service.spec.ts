@@ -37,6 +37,8 @@ describe('NotesService', () => {
       note: 'me encanta trabajar con NestJs',
       likedBy: [querySet.$push.likedBy],
     })),
+
+    select: jest.fn(),
   };
 
   beforeEach(async () => {

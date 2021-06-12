@@ -13,9 +13,8 @@ export class NotesService {
 
   async getNotes() {
     try {
-      return this.noteModel
-        .find()
-        .select({ __v: 0, createdAt: 0, updatedAt: 0 });
+      return this.noteModel.find();
+      //.select({ __v: 0, createdAt: 0, updatedAt: 0 });
     } catch (error) {
       return error;
     }
@@ -23,9 +22,8 @@ export class NotesService {
 
   async getNote(noteId: string) {
     try {
-      return this.noteModel
-        .findOne({ _id: noteId })
-        .select({ __v: 0, createdAt: 0, updatedAt: 0 });
+      return this.noteModel.findOne({ _id: noteId });
+      //.select({ __v: 0, createdAt: 0, updatedAt: 0 });
     } catch (error) {
       return error;
     }
@@ -41,13 +39,12 @@ export class NotesService {
 
   async likeNote(dto: LikeNoteDto) {
     try {
-      return this.noteModel
-        .findOneAndUpdate(
-          { _id: dto.noteId },
-          { $push: { likedBy: dto.userId } },
-          { new: true },
-        )
-        .select({ __v: 0, createdAt: 0, updatedAt: 0 });
+      return this.noteModel.findOneAndUpdate(
+        { _id: dto.noteId },
+        { $push: { likedBy: dto.userId } },
+        { new: true },
+      );
+      //.select({ __v: 0, createdAt: 0, updatedAt: 0 });
     } catch (error) {
       return error;
     }
@@ -55,9 +52,8 @@ export class NotesService {
 
   async getLikedNotes(userId: string) {
     try {
-      return this.noteModel
-        .find({ likedBy: userId })
-        .select({ __v: 0, createdAt: 0, updatedAt: 0 });
+      return this.noteModel.find({ likedBy: userId });
+      //.select({ __v: 0, createdAt: 0, updatedAt: 0 });
     } catch (error) {
       return error;
     }
