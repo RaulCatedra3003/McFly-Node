@@ -4,6 +4,7 @@ import {
   Controller,
   Get,
   Param,
+  Patch,
   Post,
 } from '@nestjs/common';
 import { CreateNoteDto } from '../dto/create-note.dto';
@@ -54,7 +55,7 @@ export class NotesController {
     }
   }
 
-  @Post('/like')
+  @Patch('/like')
   async likeNote(@Body() likeNoteDto: LikeNoteDto) {
     try {
       const response = await this.notesService.likeNote(likeNoteDto);
