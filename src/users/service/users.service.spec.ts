@@ -30,6 +30,12 @@ describe('UsersService', () => {
         _id: '60be6969e3fb9e5fe0a6b816',
       };
     }),
+
+    findOne: jest.fn((dto) => ({
+      _id: '60be6969e3fb9e5fe0a6b816',
+      email: dto.email,
+      password: 'a12sadf83dflkghg2341234',
+    })),
   };
 
   beforeEach(async () => {
@@ -88,6 +94,18 @@ describe('UsersService', () => {
     expect(user).toEqual({
       _id: expect.any(String),
       email: 'manolo@mail.com',
+    });
+  });
+
+  it('calling getUserByEmail should return one user with the email', async () => {
+    const userEmail = 'manolo@mail.com';
+
+    const user = await service.getUserByEmail(userEmail);
+
+    expect(user).toEqual({
+      _id: expect.any(String),
+      email: 'manolo@mail.com',
+      password: expect.any(String),
     });
   });
 });
