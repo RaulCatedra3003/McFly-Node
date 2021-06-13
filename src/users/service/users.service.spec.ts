@@ -53,7 +53,7 @@ describe('UsersService', () => {
     expect(service).toBeDefined();
   });
 
-  it('calling getUsers should return all users', async () => {
+  it('call getUsers should return all users', async () => {
     const response = [
       {
         _id: '60be6969e3fb9e5fe0a6b816',
@@ -70,7 +70,7 @@ describe('UsersService', () => {
     expect(users).toEqual(response);
   });
 
-  it('calling getUser should return one user', async () => {
+  it('call getUser should return one user', async () => {
     const userId = '60be6969e3fb9e5fe0a6b816';
     const response = {
       _id: '60be6969e3fb9e5fe0a6b816',
@@ -83,7 +83,7 @@ describe('UsersService', () => {
     expect(user).toEqual(response);
   });
 
-  it('calling createUser should return created user', async () => {
+  it('call createUser should return created user', async () => {
     const dto = {
       email: 'manolo@mail.com',
       password: '123456',
@@ -97,7 +97,7 @@ describe('UsersService', () => {
     });
   });
 
-  it('calling getUserByEmail should return one user with the email', async () => {
+  it('call getUserByEmail should return one user with the email', async () => {
     const userEmail = 'manolo@mail.com';
 
     const user = await service.getUserByEmail(userEmail);
