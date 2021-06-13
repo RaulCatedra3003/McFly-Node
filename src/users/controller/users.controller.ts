@@ -11,20 +11,17 @@ export class UsersController {
     try {
       return this.usersService.getUsers();
     } catch (error) {
-      return new BadRequestException(error.message);
+      throw new BadRequestException(error.message);
     }
   }
 
   @Get('/:userId')
   async getUser(@Param('userId', MongoDbObjectIdPipe) userId: string) {
     try {
-      const { _id, email } = await this.usersService.getUser(userId);
-      return {
-        _id,
-        email,
-      };
+      const user = await this.usersService.getUser(userId);
+      return user;
     } catch (error) {
-      return new BadRequestException(error.message);
+      throw new BadRequestException(error.message);
     }
   }
 }

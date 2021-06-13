@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CreateNoteDto } from '../dto/create-note.dto';
@@ -15,7 +15,7 @@ export class NotesService {
     try {
       return this.noteModel.find({}, 'note likedBy');
     } catch (error) {
-      return error;
+      throw new BadRequestException(error.message);
     }
   }
 
@@ -23,7 +23,7 @@ export class NotesService {
     try {
       return this.noteModel.findOne({ _id: noteId }, 'note likedBy');
     } catch (error) {
-      return error;
+      throw new BadRequestException(error.message);
     }
   }
 
@@ -36,7 +36,7 @@ export class NotesService {
         likedBy,
       };
     } catch (error) {
-      return error;
+      throw new BadRequestException(error.message);
     }
   }
 
@@ -48,7 +48,7 @@ export class NotesService {
         { new: true, fields: { __v: 0, updatedAt: 0, createdAt: 0 } },
       );
     } catch (error) {
-      return error;
+      throw new BadRequestException(error.message);
     }
   }
 
@@ -56,7 +56,7 @@ export class NotesService {
     try {
       return this.noteModel.find({ likedBy: userId }, 'note likedBy');
     } catch (error) {
-      return error;
+      throw new BadRequestException(error.message);
     }
   }
 }

@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CreateUserDto } from '../dto/create-user.dtp';
@@ -14,15 +14,15 @@ export class UsersService {
     try {
       return this.userModel.find({}, 'email');
     } catch (error) {
-      return error;
+      throw new BadRequestException(error.message);
     }
   }
 
   async getUser(userId: string) {
     try {
-      return this.userModel.findById(userId);
+      return this.userModel.findById(userId, 'email');
     } catch (error) {
-      return error;
+      throw new BadRequestException(error.message);
     }
   }
 
@@ -31,7 +31,7 @@ export class UsersService {
       const { _id, email } = await this.userModel.create(dto);
       return { _id, email };
     } catch (error) {
-      return error;
+      throw new BadRequestException(error.message);
     }
   }
 
@@ -39,7 +39,7 @@ export class UsersService {
     try {
       return this.userModel.findOne({ email: userEmail });
     } catch (error) {
-      return error;
+      throw new BadRequestException(error.message);
     }
   }
 }
