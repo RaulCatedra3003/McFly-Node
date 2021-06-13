@@ -34,4 +34,12 @@ export class UsersService {
       return error;
     }
   }
+
+  async getUserByEmail(userEmail: string) {
+    try {
+      return this.userModel.findOne({ email: userEmail });
+    } catch (error) {
+      return error;
+    }
+  }
 }
