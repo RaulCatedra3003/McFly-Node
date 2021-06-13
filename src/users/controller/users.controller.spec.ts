@@ -5,7 +5,9 @@ import { UsersController } from './users.controller';
 describe('UsersController', () => {
   let controller: UsersController;
 
-  const mockUsersService = {};
+  const mockUsersService = {
+    getUsers: jest.fn(),
+  };
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -21,5 +23,10 @@ describe('UsersController', () => {
 
   it('should be defined', () => {
     expect(controller).toBeDefined();
+  });
+
+  it('http get to root should call getUsers function from Users Service', () => {
+    controller.getUsers();
+    expect(mockUsersService.getUsers).toHaveBeenCalled();
   });
 });
