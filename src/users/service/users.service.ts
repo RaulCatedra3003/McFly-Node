@@ -8,4 +8,10 @@ export class UsersService {
   constructor(
     @InjectModel('user') private readonly userModel: Model<UserDocument>,
   ) {}
+
+  async getUsers() {}
+
+  async getUser(userId: string) {}
+
+  async createUser(dto: CreateUserDto) {}
 }

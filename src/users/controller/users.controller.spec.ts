@@ -7,6 +7,7 @@ describe('UsersController', () => {
 
   const mockUsersService = {
     getUsers: jest.fn(),
+    getUser: jest.fn(),
   };
 
   beforeEach(async () => {
@@ -28,5 +29,11 @@ describe('UsersController', () => {
   it('http get to root should call getUsers function from Users Service', () => {
     controller.getUsers();
     expect(mockUsersService.getUsers).toHaveBeenCalled();
+  });
+
+  it('http get to /:userId should call getUser function from Users Service', () => {
+    const userId = '60be6969e3fb9e5fe0a6b816';
+    controller.getUser(userId);
+    expect(mockUsersService.getUser).toHaveBeenCalled();
   });
 });

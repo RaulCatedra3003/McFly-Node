@@ -1,4 +1,5 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
+import { MongoDbObjectIdPipe } from 'src/notes/pipes/mongodb-object-id.pipe';
 import { UsersService } from '../service/users.service';
 
 @Controller('users')
@@ -7,4 +8,7 @@ export class UsersController {
 
   @Get()
   async getUsers() {}
+
+  @Get('/:userId')
+  async getUser(@Param('userId', MongoDbObjectIdPipe) userId: string) {}
 }
