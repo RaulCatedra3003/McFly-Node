@@ -2,6 +2,7 @@ import { getModelToken } from '@nestjs/mongoose';
 import { Test, TestingModule } from '@nestjs/testing';
 import { UsersService } from './users.service';
 import * as bcrypt from 'bcrypt';
+import { CreateUserDto } from '../dto/create-user.dtp';
 
 describe('UsersService', () => {
   let service: UsersService;
@@ -24,11 +25,12 @@ describe('UsersService', () => {
       password: 'a12sadf83dflkghg2341234',
     })),
 
-    create: jest.fn((dto) => ({
-      _id: '60be6969e3fb9e5fe0a6b816',
-      email: dto.email,
-      password: bcrypt.hash(dto.password, 10),
-    })),
+    create: jest.fn((dto: CreateUserDto) => {
+      return {
+        ...dto,
+        _id: '60be6969e3fb9e5fe0a6b816',
+      };
+    }),
   };
 
   beforeEach(async () => {
@@ -87,7 +89,6 @@ describe('UsersService', () => {
     expect(user).toEqual({
       _id: expect.any(String),
       email: 'manolo@mail.com',
-      password: expect(bcrypt.hash('123456', 10)),
     });
   });
 });

@@ -9,7 +9,7 @@ import {
 } from '@nestjs/common';
 import { CreateNoteDto } from '../dto/create-note.dto';
 import { LikeNoteDto } from '../dto/like-note.dto';
-import { MongoDbObjectIdPipe } from '../pipes/mongodb-object-id.pipe';
+import { MongoDbObjectIdPipe } from '../../pipes/mongodb-object-id.pipe';
 import { NotesService } from '../service/notes.service';
 
 @Controller('notes')
