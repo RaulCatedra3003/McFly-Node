@@ -1,7 +1,6 @@
 import { getModelToken } from '@nestjs/mongoose';
 import { Test, TestingModule } from '@nestjs/testing';
 import { UsersService } from './users.service';
-import * as bcrypt from 'bcrypt';
 import { CreateUserDto } from '../dto/create-user.dtp';
 
 describe('UsersService', () => {
