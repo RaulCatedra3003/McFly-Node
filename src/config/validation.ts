@@ -5,4 +5,5 @@ export const configValidationSchema = Joi.object({
   PORT: Joi.number().default(4000),
   CLIENT_URL: Joi.string().required(),
   MONGO_DB_URL: Joi.string().required(),
+  JWT_KEY: Joi.string().required(),
 });

@@ -4,5 +4,6 @@ export const configuration = () => {
     port: process.env.PORT,
     clientUrl: process.env.CLIENT_URL,
     dbUrl: process.env.MONGO_DB_URL,
+    jwtKey: process.env.JWT_KEY,
   };
 };

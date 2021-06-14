@@ -3,12 +3,19 @@ import { UsersService } from 'src/users/service/users.service';
 import { ValidateUserDto } from '../dto/validate-user.dto';
 import * as bcrypt from 'bcrypt';
 import { SignUpDto } from '../dto/signup.dto';
+import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class AuthenticationService {
-  constructor(private userService: UsersService) {}
+  constructor(
+    private userService: UsersService,
+    private jwtService: JwtService,
+  ) {}
   async logIn(user: any) {
-    return `loged correctly with: ${user._id}`;
+    const payload = { _id: user };
+    return {
+      access_token: this.jwtService.sign(payload),
+    };
   }
 
   async validateUser(validateUserDto: ValidateUserDto) {
