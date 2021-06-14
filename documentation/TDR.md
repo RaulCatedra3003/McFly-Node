@@ -18,6 +18,7 @@ The aim of this project is to create a API to create, get and like notes.
 - The API is must be build with NestJs framework.
 - Its a good point to have unit test in the code.
 
+
 ## 🧬 Project Structure 🧬
 
 In the root folder you can find the [documentation](../documentation) and the general project configuration.
