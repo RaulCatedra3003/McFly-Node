@@ -66,10 +66,20 @@
 		{
 			"name": "get liked notes",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOnsiX2lkIjoiNjBjNjg1OTMyNTA4MGM0Yjc4ZWFmMjJmIn0sImlhdCI6MTYyMzYyOTYyMCwiZXhwIjoxNjIzNjMwMjIwfQ.MfOUSTNmTrwRcS4SUFFQKjHguRykC9CPLVNVIlizD3c",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:4000/notes/liked/60c23c81c0e33b52c47b0ebd",
+					"raw": "http://localhost:4000/notes/liked",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -77,8 +87,7 @@
 					"port": "4000",
 					"path": [
 						"notes",
-						"liked",
-						"60c23c81c0e33b52c47b0ebd"
+						"liked"
 					]
 				}
 			},
@@ -91,7 +100,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"note\": \"me encanta trabajar con NestJs\"\r\n}",
+					"raw": "{\r\n    \"note\": \"me encanta trabajar estar en casa\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -115,19 +124,20 @@
 		{
 			"name": "Likle Note",
 			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"userId\": \"60c25672c97f3851341b84c4\",\r\n    \"noteId\": \"60c23c81c0e33b52c47b0ebc\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOnsiX2lkIjoiNjBjNjg1OTMyNTA4MGM0Yjc4ZWFmMjJmIn0sImlhdCI6MTYyMzYyOTYyMCwiZXhwIjoxNjIzNjMwMjIwfQ.MfOUSTNmTrwRcS4SUFFQKjHguRykC9CPLVNVIlizD3c",
+							"type": "string"
 						}
-					}
+					]
 				},
+				"method": "PATCH",
+				"header": [],
 				"url": {
-					"raw": "http://localhost:4000/notes/like",
+					"raw": "http://localhost:4000/notes/like/60c5c3294724f222d8709801",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -135,7 +145,105 @@
 					"port": "4000",
 					"path": [
 						"notes",
-						"like"
+						"like",
+						"60c5c3294724f222d8709801"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post signUp",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"manolo@manolo.com\",\r\n    \"password\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/auth/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get user by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/users/60c6859325080c4b78eaf22f",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"users",
+						"60c6859325080c4b78eaf22f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "log In and get Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"manolo@manolo.com\",\r\n    \"password\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"auth",
+						"login"
 					]
 				}
 			},

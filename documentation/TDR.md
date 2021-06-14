@@ -1,6 +1,5 @@
 # Technical Design Review
 
-
 ## 🔮 Overview 🔮
 
 The aim of this project is to create a API to create, get and like notes.
@@ -18,7 +17,8 @@ The aim of this project is to create a API to create, get and like notes.
 
 - The API is must be build with NestJs framework.
 - Its a good point to have unit test in the code.
-  
+
+
 ## 🧬 Project Structure 🧬
 
 In the root folder you can find the [documentation](../documentation) and the general project configuration.
@@ -27,6 +27,5 @@ The src folder includes the project code.
 ### 👀 More information 👀
 
 For more information you can visit the [postmant collection](../documentation) of the API
-
 
 ## Whit ❤ [Raúl Cátedra](https://github.com/RaulCatedra3003)

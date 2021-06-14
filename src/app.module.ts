@@ -6,6 +6,8 @@ import { configuration } from './config/configuration';
 import { configValidationSchema } from './config/validation';
 import { DatabaseModule } from './database/database.module';
 import { NotesModule } from './notes/notes.module';
+import { UsersModule } from './users/users.module';
+import { AuthenticationModule } from './authentication/authentication.module';
 
 @Module({
   imports: [
@@ -16,6 +18,8 @@ import { NotesModule } from './notes/notes.module';
     }),
     DatabaseModule.forRoot(),
     NotesModule,
+    UsersModule,
+    AuthenticationModule,
   ],
   controllers: [AppController],
   providers: [AppService],

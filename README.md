@@ -1,6 +1,5 @@
 This project proposes a simple API to get, create, and like notes writing in JavaScript (Typescript) and using NestJs Framework.
 
-
 ## Start 🚀
 
 Get a clone of the project in local. You need to have installed nodejs and nestjs
@@ -43,6 +42,21 @@ NODE_ENV = development
 PORT = 4000
 CLIENT_URL = http://localhost:3000
 MONGO_DB_URL = your mongo Db url conection
+JWT_KEY = your JWT secret key
+```
+
+_Then you have to run server with the next command_
+
+```
+npm run start:dev
+```
+
+_When the server start you can import postmant collection and send fetch to the endpoints_
+
+_If you want to run test, in new terminal, in the base folder execute the next command:_
+
+```
+npm run test:watch
 ```
 
 ## Build with 🛠️

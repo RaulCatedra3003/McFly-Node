@@ -37,6 +37,8 @@ describe('NotesService', () => {
       note: 'me encanta trabajar con NestJs',
       likedBy: [querySet.$push.likedBy],
     })),
+
+    select: jest.fn(),
   };
 
   beforeEach(async () => {
@@ -57,7 +59,7 @@ describe('NotesService', () => {
     expect(service).toBeDefined();
   });
 
-  it('calling getNotes should return all notes', async () => {
+  it('call getNotes should return all notes', async () => {
     const response = [
       {
         _id: '60be6969e3fb9e5fe0a6b816',
@@ -76,7 +78,7 @@ describe('NotesService', () => {
     expect(notes).toEqual(response);
   });
 
-  it('calling getNote should return one note', async () => {
+  it('call getNote should return one note', async () => {
     const noteId = '60be6969e3fb9e5fe0a6b816';
     const response = {
       _id: '60be6969e3fb9e5fe0a6b816',
@@ -89,7 +91,7 @@ describe('NotesService', () => {
     expect(note).toEqual(response);
   });
 
-  it('calling createNote should return created note', async () => {
+  it('call createNote should return created note', async () => {
     const dto = {
       note: 'me encanta trabajar con NestJs',
     };
@@ -103,7 +105,7 @@ describe('NotesService', () => {
     });
   });
 
-  it('calling likeNote should return note with userId inside likedBy array', async () => {
+  it('call likeNote should return note with userId inside likedBy array', async () => {
     const dto = {
       userId: '60be6969e3fb9e5fe0a6b816',
       noteId: '60be6969e3fb9e5fe0a6b817',
@@ -118,7 +120,7 @@ describe('NotesService', () => {
     });
   });
 
-  it('calling likesNotes should return all the user liked notes', async () => {
+  it('call likesNotes should return all the user liked notes', async () => {
     const userId = '60be6969e3fb9e5fe0a6b816';
 
     const note = await service.getLikedNotes(userId);
