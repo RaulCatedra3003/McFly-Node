@@ -49,7 +49,7 @@ describe('NotesController', () => {
     expect(mockNoteService.createNote).toHaveBeenCalled();
   });
 
-  it('call likeNote shoutd call likeNote function from Notes Service', () => {
+  /* it('call likeNote shoutd call likeNote function from Notes Service', () => {
     const dto = {
       userId: '60be6969e3fb9e5fe0a6b816',
       noteId: '60be6969e3fb9e5fe0a6b817',
@@ -57,7 +57,7 @@ describe('NotesController', () => {
     controller.likeNote(dto);
 
     expect(mockNoteService.likeNote).toHaveBeenCalled();
-  });
+  }); */
 
   it('call getLikedNotes shoutd call likedNotes function from Notes Service', () => {
     const userId = '60be6969e3fb9e5fe0a6b816';
